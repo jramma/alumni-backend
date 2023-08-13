@@ -17,7 +17,7 @@ public class AlumniController {
     private AlumniService alumniService;
 
 
-    // GESTION DE ALUMNOS -- CRUD BASIC
+    // GESTION DE ALUMNOS -- CRUD BASIC ----------------------------------------------------------------
     @GetMapping("/alumni")
     public Flux<Alumno> listarAlumnos(){
         return alumniService.findAllAlumnos();
@@ -42,10 +42,16 @@ public class AlumniController {
     public Mono<Void> eliminarAlumno(@RequestBody String mailAlumno){
     return alumniService.eliminarContacto(mailAlumno);
     }
+
+
+    // MANEJO DE DIRECCIONES ----------------------------------------------------------------
     @PostMapping("/postDireccion")
     public Mono<ResponseEntity<Direccion>> postDireccion(@RequestBody Direccion direccion){
         return alumniService.postDireccion(direccion);
     }
 
+    // MANEJO DE PROFESORES ----------------------------------------------------------------
+    // CRUD ESTUDIOS ----------------------------------------------------------------
+    // CRUD CUESTIONARIO ----------------------------------------------------------------
 
 }
