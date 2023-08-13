@@ -3,6 +3,8 @@ package com.api.rest.reactive.domain.entity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.http.ResponseEntity;
+import reactor.core.publisher.Mono;
 
 import java.util.Objects;
 
@@ -46,4 +48,6 @@ public class Alumno {
                 ", mediaGlobal=" + mediaGlobal +
                 '}';
     }
+
+
 }

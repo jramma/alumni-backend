@@ -3,6 +3,7 @@ package com.api.rest.reactive.service;
 import com.api.rest.reactive.domain.entity.Alumno;
 import com.api.rest.reactive.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -24,14 +25,19 @@ public class AlumniService {
 
     public Flux<Alumno> findAllAlumnos() {
         // return (Flux<Alumno>) alumnoRepo.findAll();
-        return Flux.just((Alumno) alumnoRepo.findAll());
+        return alumnoRepo.findAll();
     }
 
     public Mono<ResponseEntity<Alumno>> findAlumno(String nombreOApellido) {
         return alumnoRepo.findAllByNombreOrApellido(nombreOApellido)
                 .map(alumno -> ResponseEntity.ok(alumno))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 
+    public Mono<ResponseEntity<Alumno>> guardarContacto(Alumno alumno) {
+        return alumnoRepo.insert(alumno)
+                .map(alumnoG -> new ResponseEntity<>(alumnoG, HttpStatus.ACCEPTED))
+                .defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_ACCEPTABLE));
 
     }
 }
