@@ -28,5 +28,10 @@ public class AlumniController {
 
     return alumniService.guardarContacto(alumno);
     }
+    @PutMapping("/alumni")
+    public Mono<ResponseEntity<Alumno>> editarAlumno(@RequestBody Alumno alumno){
+
+        return alumniService.editarContacto(alumno);
+    }
 
 }
