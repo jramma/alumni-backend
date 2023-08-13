@@ -1,6 +1,7 @@
 package com.api.rest.reactive.controller;
 
 import com.api.rest.reactive.domain.entity.Alumno;
+import com.api.rest.reactive.domain.entity.Direccion;
 import com.api.rest.reactive.service.AlumniService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AlumniController {
     @PostMapping("/alumni")
     public Mono<ResponseEntity<Alumno>> guardarAlumno(@RequestBody Alumno alumno){
 
-    return alumniService.guardarContacto(alumno);
+    return alumniService.guardarAlumno(alumno);
     }
     @PutMapping("/alumni")
     public Mono<ResponseEntity<Alumno>> editarAlumno(@RequestBody Alumno alumno){
@@ -40,6 +41,10 @@ public class AlumniController {
     @DeleteMapping("/alumni")
     public Mono<Void> eliminarAlumno(@RequestBody String mailAlumno){
     return alumniService.eliminarContacto(mailAlumno);
+    }
+    @PostMapping("/postDireccion")
+    public Mono<ResponseEntity<Direccion>> postDireccion(@RequestBody Direccion direccion){
+        return alumniService.postDireccion(direccion);
     }
 
 

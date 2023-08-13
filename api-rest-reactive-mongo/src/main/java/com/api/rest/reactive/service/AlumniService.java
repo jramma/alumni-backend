@@ -1,6 +1,7 @@
 package com.api.rest.reactive.service;
 
 import com.api.rest.reactive.domain.entity.Alumno;
+import com.api.rest.reactive.domain.entity.Direccion;
 import com.api.rest.reactive.repository.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,19 @@ public class AlumniService {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    public Mono<ResponseEntity<Alumno>> guardarContacto(Alumno alumno) {
-        return alumnoRepo.insert(alumno)
+    public Mono<ResponseEntity<Alumno>> guardarAlumno(Alumno alumno) {
+        Direccion direccion1 = alumno.getDireccion();
+        return direccionRepo.findByDireccionAndPostalCodeAndCiudadAndPisoAndPuerta(
+                        direccion1.getDireccion(), direccion1.getPostalCode(), direccion1.getCiudad(),
+                        direccion1.getPiso(), direccion1.getPuerta())
+                .flatMap(direccionEncontrada -> {
+                    alumno.setDireccion(direccionEncontrada);
+                    return alumnoRepo.insert(alumno);
+                })
                 .map(alumnoG -> new ResponseEntity<>(alumnoG, HttpStatus.ACCEPTED))
                 .defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_ACCEPTABLE));
-
     }
+
 
     public Mono<ResponseEntity<Alumno>> editarContacto(Alumno alumno) {
 
@@ -52,8 +60,15 @@ public class AlumniService {
                 })
                 .defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_FOUND));
     }
+
     public Mono<Void> eliminarContacto(String mailAlumno) {
-       Alumno alumno = alumnoRepo.findByMail(mailAlumno);
-       return alumnoRepo.deleteById(alumno.getId());
+        Alumno alumno = alumnoRepo.findByMail(mailAlumno);
+        return alumnoRepo.deleteById(alumno.getId());
+    }
+
+    public Mono<ResponseEntity<Direccion>> postDireccion(Direccion direccion) {
+        return direccionRepo.insert(direccion)
+                .map(direccionS -> new ResponseEntity<>(direccionS, HttpStatus.ACCEPTED))
+                .defaultIfEmpty(new ResponseEntity<>(direccion, HttpStatus.NOT_ACCEPTABLE));
     }
 }
