@@ -2,6 +2,7 @@ package com.api.rest.reactive.service;
 
 import com.api.rest.reactive.domain.entity.Alumno;
 import com.api.rest.reactive.repository.*;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,17 +42,18 @@ public class AlumniService {
     }
 
     public Mono<ResponseEntity<Alumno>> editarContacto(Alumno alumno) {
-    return alumnoRepo.findFirstByMail(alumno.getMail())
-            .flatMap(alumnoActualizado ->{
-                alumnoActualizado.setApellido(alumno.getApellido());
-                alumnoActualizado.setEdad(alumno.getEdad());
-                alumnoActualizado.setMadre(alumno.getMadre());
-                alumnoActualizado.setPadre(alumno.getPadre());
-                alumnoActualizado.setApellido(alumno.getApellido());
-                alumnoActualizado.setMediaGlobal(alumno.getMediaGlobal());
-    // faltan futures **************************                                    ***************************
-               return alumnoRepo.save(alumnoActualizado)
-                       .map(alumno1-> new ResponseEntity<>(alumno1, HttpStatus.ACCEPTED));
-            }).defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_FOUND));
+
+        // OJO SI ALUMNO TIENE PROPIEDADES VACIAS LAS COPIARA, HACER EL FORMULARIO OBLIGATORIO
+        return alumnoRepo.findFirstByMail(alumno.getMail())
+                .flatMap(alumnoActualizado -> {
+                    BeanUtils.copyProperties(alumno, alumnoActualizado, "id", "mail");
+                    return alumnoRepo.save(alumnoActualizado)
+                            .map(alumno1 -> new ResponseEntity<>(alumno1, HttpStatus.ACCEPTED));
+                })
+                .defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_FOUND));
+    }
+    public Mono<Void> eliminarContacto(String mailAlumno) {
+       Alumno alumno = alumnoRepo.findByMail(mailAlumno);
+       return alumnoRepo.deleteById(alumno.getId());
     }
 }

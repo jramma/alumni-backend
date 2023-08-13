@@ -15,7 +15,4 @@ public class Direccion {
     private String ciudad;
     private int piso;
     private String puerta;
-
-
-
 }

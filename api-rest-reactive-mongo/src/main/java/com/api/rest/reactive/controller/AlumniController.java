@@ -14,6 +14,9 @@ public class AlumniController {
 
     @Autowired
     private AlumniService alumniService;
+
+
+    // GESTION DE ALUMNOS -- CRUD BASIC
     @GetMapping("/alumni")
     public Flux<Alumno> listarAlumnos(){
         return alumniService.findAllAlumnos();
@@ -33,5 +36,11 @@ public class AlumniController {
 
         return alumniService.editarContacto(alumno);
     }
+
+    @DeleteMapping("/alumni")
+    public Mono<Void> eliminarAlumno(@RequestBody String mailAlumno){
+    return alumniService.eliminarContacto(mailAlumno);
+    }
+
 
 }

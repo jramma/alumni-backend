@@ -20,17 +20,22 @@ public class Alumno {
     private String padre;
     private String madre;
     private double mediaGlobal;
-    /**
-     *     private String observaciones;
-     *     private int posibilidadDeBulling;
-     *     private int victimaBulling;
-     *     private int victimaSuicidio;
-     *     private int victimaBulimia;
-     *     private int victimaHomofobia;
-     *     private int marginacion;
-     *     private int narcicismo;
-     *     private int ego;
-     *
-     */
+    // para la IA
+    private String observaciones;
+    private int posibilidadDeBulling;
+    private int victimaBulling;
+    private int victimaSuicidio;
+    private int trastornoAliment;
+    private int victimaHomofobia;
+    private int marginacion;
+    private int narcicismo;
+    private int ego;
+    private int introvertido;
+    private int tda;
+    private int pas;
+    private int ansiedad;
+    private int autista;
+    private int estres;
+    private int esquizofrenia;
 
 }

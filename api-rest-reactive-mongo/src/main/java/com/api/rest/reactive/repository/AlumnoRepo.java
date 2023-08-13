@@ -9,6 +9,6 @@ public interface AlumnoRepo extends ReactiveMongoRepository<Alumno,String> {
     Mono<Alumno> findFirstByMail(String mail);
 
     Mono<Alumno> findAllByNombreOrApellido(String nombreOrApellido);
-
+    Alumno findByMail(String mail);
 
 }
