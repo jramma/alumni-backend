@@ -35,6 +35,7 @@
 	</dependencies>
 	<modules>
 		<module>api-rest-reactive-mongo</module>
+		<module>api-gateway</module>
 	</modules>
 
 	<build>

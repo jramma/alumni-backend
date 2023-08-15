@@ -35,12 +35,12 @@ public class AlumniController {
     @PutMapping("/alumni")
     public Mono<ResponseEntity<Alumno>> editarAlumno(@RequestBody Alumno alumno){
 
-        return alumniService.editarContacto(alumno);
+        return alumniService.editarAlumno(alumno);
     }
 
     @DeleteMapping("/alumni")
     public Mono<Void> eliminarAlumno(@RequestBody String mailAlumno){
-    return alumniService.eliminarContacto(mailAlumno);
+    return alumniService.eliminarAlumno(mailAlumno);
     }
 
 

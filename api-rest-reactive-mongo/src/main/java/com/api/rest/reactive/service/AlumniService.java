@@ -49,7 +49,7 @@ public class AlumniService {
     }
 
 
-    public Mono<ResponseEntity<Alumno>> editarContacto(Alumno alumno) {
+    public Mono<ResponseEntity<Alumno>> editarAlumno(Alumno alumno) {
 
         // OJO SI ALUMNO TIENE PROPIEDADES VACIAS LAS COPIARA, HACER EL FORMULARIO OBLIGATORIO
         return alumnoRepo.findFirstByMail(alumno.getMail())
@@ -61,7 +61,7 @@ public class AlumniService {
                 .defaultIfEmpty(new ResponseEntity<>(alumno, HttpStatus.NOT_FOUND));
     }
 
-    public Mono<Void> eliminarContacto(String mailAlumno) {
+    public Mono<Void> eliminarAlumno(String mailAlumno) {
         Alumno alumno = alumnoRepo.findByMail(mailAlumno);
         return alumnoRepo.deleteById(alumno.getId());
     }
