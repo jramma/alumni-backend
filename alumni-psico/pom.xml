@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>cat.api.study</groupId>
-	<artifactId>psico-service</artifactId>
+	<artifactId>alumni-psico</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>psico-service</name>
 	<description>psico-service</description>

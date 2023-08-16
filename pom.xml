@@ -35,9 +35,10 @@
 	</dependencies>
 	<modules>
 		<module>alumni-service</module>
-		<module>api-gateway</module>
-		<module>psico-service</module>
-		<module>login-service</module>
+		<module>alumni-gateway</module>
+		<module>alumni-psico</module>
+		<module>alumni-login</module>
+		<module>alumni-usermanagement</module>
 	</modules>
 
 	<build>

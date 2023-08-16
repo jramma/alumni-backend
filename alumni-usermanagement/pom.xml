@@ -7,22 +7,22 @@
 		<artifactId>com.main.mvp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cat.api.study</groupId>
-	<artifactId>login-service</artifactId>
+	<groupId>cat.api.alumni</groupId>
+	<artifactId>alumni-usermanagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>login-service</name>
-	<description>login-service</description>
+	<name>alumni-usermanagement</name>
+	<description>alumni-usermanagement</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>

@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.api.rest.reactive</groupId>
-	<artifactId>api-gateway</artifactId>
+	<artifactId>alumni-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-gateway</name>
 	<description>api-gateway</description>
