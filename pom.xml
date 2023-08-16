@@ -36,6 +36,8 @@
 	<modules>
 		<module>alumni-service</module>
 		<module>api-gateway</module>
+		<module>psico-service</module>
+		<module>login-service</module>
 	</modules>
 
 	<build>
