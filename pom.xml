@@ -34,7 +34,7 @@
 		</dependency>
 	</dependencies>
 	<modules>
-		<module>api-rest-reactive-mongo</module>
+		<module>alumni-service</module>
 		<module>api-gateway</module>
 	</modules>
 

@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.api.rest.reactive</groupId>
-	<artifactId>api-rest-reactive-mongo</artifactId>
+	<artifactId>alumni-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-rest-reactive-mongo</name>
 	<description>Demo project for Spring Boot</description>
