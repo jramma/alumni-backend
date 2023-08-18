@@ -20,7 +20,6 @@ public class Alumno {
     private String padre;
     private String madre;
     private double mediaGlobal;
-    // para la IA
     private String observaciones;
     private int posibilidadDeBulling;
     private int victimaBulling;
